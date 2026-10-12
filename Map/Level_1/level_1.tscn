@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://m0rdjmpvqxuu"]
+
+[ext_resource type="Script" uid="uid://bk05xeu5tgiwl" path="res://Map/Level_1/Level_1.gd" id="1_hbghi"]
+[ext_resource type="Texture2D" uid="uid://cfukwqm51cpmd" path="res://Other_Files/icon.svg" id="2_hn12h"]
+
+[node name="Level 1" type="Node2D" unique_id=286940713]
+script = ExtResource("1_hbghi")
+
+[node name="Icon" type="Sprite2D" parent="." unique_id=1619440645]
+position = Vector2(518, 571)
+texture = ExtResource("2_hn12h")
+
+[node name="Back" type="Button" parent="." unique_id=38255212]
+offset_left = 8.0
+offset_top = 11.0
+offset_right = 70.0
+offset_bottom = 51.0
+text = "Back"
+
+[connection signal="pressed" from="Back" to="." method="_on_back_pressed"]

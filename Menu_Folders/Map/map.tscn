@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://bdet2wp4djl6u"]
 
+<<<<<<< Updated upstream:Menu_Folders/Map/map.tscn
 [ext_resource type="Script" uid="uid://dqf270dvrdi6k" path="res://Menu_Folders/Map/Map.gd" id="1_njngi"]
 
 [node name="Map" type="Node2D" unique_id=1235220526]
