@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://b68qty472wuc3"
-path="res://.godot/imported/sword unit (1).png-1bb4f24227aa6801a4bc972154dfad49.ctex"
+path="res://.godot/imported/sword unit (1).png-ffe464e593691bd923aa8d5dba344dd3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sword unit (1).png"
-dest_files=["res://.godot/imported/sword unit (1).png-1bb4f24227aa6801a4bc972154dfad49.ctex"]
+source_file="res://Unit and Enemy_Folders/Units/sword unit (1).png"
+dest_files=["res://.godot/imported/sword unit (1).png-ffe464e593691bd923aa8d5dba344dd3.ctex"]
 
 [params]
 

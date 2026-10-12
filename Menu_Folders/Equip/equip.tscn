@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dqmv4htti1tl2"]
 
-[ext_resource type="Script" uid="uid://clqiqcnpkf4tl" path="res://Equip/Equip.gd" id="1_lucx5"]
+[ext_resource type="Script" uid="uid://clqiqcnpkf4tl" path="res://Menu_Folders/Equip/Equip.gd" id="1_lucx5"]
 [ext_resource type="Texture2D" uid="uid://cfukwqm51cpmd" path="res://Other_Files/icon.svg" id="2_tp4f1"]
 
 [node name="Equip" type="Node2D" unique_id=876713418]

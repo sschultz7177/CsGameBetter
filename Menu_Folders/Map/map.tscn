@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bdet2wp4djl6u"]
 
-[ext_resource type="Script" uid="uid://dqf270dvrdi6k" path="res://Map/Map.gd" id="1_njngi"]
+[ext_resource type="Script" uid="uid://dqf270dvrdi6k" path="res://Menu_Folders/Map/Map.gd" id="1_njngi"]
 [ext_resource type="Texture2D" uid="uid://cfukwqm51cpmd" path="res://Other_Files/icon.svg" id="2_6yc6o"]
 
 [node name="Map" type="Node2D" unique_id=1235220526]

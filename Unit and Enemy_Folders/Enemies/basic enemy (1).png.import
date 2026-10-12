@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://byye08fcdy5pu"
-path="res://.godot/imported/sword unit.png-332e715803df788b1cf864227b3812c3.ctex"
+uid="uid://dpeenkh42h2cg"
+path="res://.godot/imported/basic enemy (1).png-0823944db32d04036019eafe7a5a2a90.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sword unit.png"
-dest_files=["res://.godot/imported/sword unit.png-332e715803df788b1cf864227b3812c3.ctex"]
+source_file="res://Unit and Enemy_Folders/Enemies/basic enemy (1).png"
+dest_files=["res://.godot/imported/basic enemy (1).png-0823944db32d04036019eafe7a5a2a90.ctex"]
 
 [params]
 
