@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://ba30rky7nqe2a"]
+
+[ext_resource type="Script" uid="uid://ba8e0ebaorsyt" path="res://Upgrades/upgrades.gd" id="1_ildvx"]
+[ext_resource type="Texture2D" uid="uid://cfukwqm51cpmd" path="res://Other_Files/icon.svg" id="2_ilfjg"]
+
+[node name="Upgrades" type="Node2D" unique_id=1898568569]
+script = ExtResource("1_ildvx")
+
+[node name="back" type="Button" parent="." unique_id=612934181]
+offset_left = 2.0
+offset_top = 12.0
+offset_right = 105.0
+offset_bottom = 49.0
+text = "Back"
+
+[node name="Icon" type="Sprite2D" parent="." unique_id=703229234]
+position = Vector2(592, 81)
+scale = Vector2(7.234375, 1)
+texture = ExtResource("2_ilfjg")
+
+[connection signal="pressed" from="back" to="." method="_on_button_pressed"]

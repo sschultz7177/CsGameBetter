@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://dqmv4htti1tl2"]
+
+[ext_resource type="Script" uid="uid://clqiqcnpkf4tl" path="res://Equip/Equip.gd" id="1_lucx5"]
+[ext_resource type="Texture2D" uid="uid://cfukwqm51cpmd" path="res://Other_Files/icon.svg" id="2_tp4f1"]
+
+[node name="Equip" type="Node2D" unique_id=876713418]
+script = ExtResource("1_lucx5")
+
+[node name="Back" type="Button" parent="." unique_id=602902049]
+offset_left = 21.0
+offset_top = 14.0
+offset_right = 191.0
+offset_bottom = 72.0
+text = "Back"
+
+[node name="Icon" type="Sprite2D" parent="." unique_id=610679232]
+position = Vector2(70.5, 353)
+scale = Vector2(0.3828125, 3.453125)
+texture = ExtResource("2_tp4f1")
+
+[connection signal="pressed" from="Back" to="." method="_on_button_pressed"]
