@@ -1,7 +1,7 @@
 extends Control
 
 func _on_start_pressed() -> void:
-	get_tree().change_scene_to_file("res://Map/map.tscn")
+	get_tree().change_scene_to_file("res://Menu_Folders/Map/map.tscn")
 
 
 func _on_equip_pressed() -> void:
@@ -13,7 +13,7 @@ func _on_upgrades_pressed() -> void:
 
 
 func _on_settings_pressed() -> void:
-	get_tree().change_scene_to_file("res://Settings/settings.tscn")
+	get_tree().change_scene_to_file("res://Menu_Folders/Settings/settings.tscn")
 
 
 func _on_quit_pressed() -> void:
