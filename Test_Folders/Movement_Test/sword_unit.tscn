@@ -1,0 +1,137 @@
+[gd_scene format=3 uid="uid://bno0ev04ylapr"]
+
+[ext_resource type="Script" uid="uid://ddifbyse3286h" path="res://Unit and Enemy_Folders/Units/sword_unit (2).gd" id="1_v45yd"]
+[ext_resource type="Texture2D" uid="uid://byye08fcdy5pu" path="res://Unit and Enemy_Folders/Units/sword unit.png" id="2_aanxo"]
+[ext_resource type="Texture2D" uid="uid://b68qty472wuc3" path="res://Unit and Enemy_Folders/Units/sword unit (1).png" id="3_p0ipp"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mu42q"]
+atlas = ExtResource("2_aanxo")
+region = Rect2(960, 320, 320, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1with"]
+atlas = ExtResource("2_aanxo")
+region = Rect2(0, 640, 320, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3vlrp"]
+atlas = ExtResource("2_aanxo")
+region = Rect2(320, 640, 320, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_70jan"]
+atlas = ExtResource("2_aanxo")
+region = Rect2(640, 640, 320, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h1uyu"]
+atlas = ExtResource("2_aanxo")
+region = Rect2(960, 640, 320, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b1y1d"]
+atlas = ExtResource("2_aanxo")
+region = Rect2(0, 960, 320, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_utfbh"]
+atlas = ExtResource("3_p0ipp")
+region = Rect2(0, 0, 320, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mq7jf"]
+atlas = ExtResource("3_p0ipp")
+region = Rect2(0, 320, 320, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yunp4"]
+atlas = ExtResource("2_aanxo")
+region = Rect2(320, 0, 320, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ghmye"]
+atlas = ExtResource("2_aanxo")
+region = Rect2(640, 0, 320, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ohgsv"]
+atlas = ExtResource("2_aanxo")
+region = Rect2(960, 0, 320, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6bmgf"]
+atlas = ExtResource("2_aanxo")
+region = Rect2(0, 320, 320, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5dvgb"]
+atlas = ExtResource("2_aanxo")
+region = Rect2(320, 320, 320, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ud4hm"]
+atlas = ExtResource("2_aanxo")
+region = Rect2(640, 320, 320, 320)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_r3rgl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mu42q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1with")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3vlrp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_70jan")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h1uyu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b1y1d")
+}],
+"loop": 1,
+"name": &"attack",
+"speed": 9.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_utfbh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mq7jf")
+}],
+"loop": 1,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yunp4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ghmye")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ohgsv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6bmgf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5dvgb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ud4hm")
+}],
+"loop": 1,
+"name": &"move",
+"speed": 9.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lk74j"]
+size = Vector2(150, 309.5)
+
+[node name="Sword unit" type="CharacterBody2D" unique_id=1605307685 groups=["units"]]
+script = ExtResource("1_v45yd")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1606454188]
+position = Vector2(2, -165)
+sprite_frames = SubResource("SpriteFrames_r3rgl")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1880855755]
+position = Vector2(2, -157)
+shape = SubResource("RectangleShape2D_lk74j")
