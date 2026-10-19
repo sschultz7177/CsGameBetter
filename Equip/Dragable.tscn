@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://c0ngeuvo6wb48"]
+
+[ext_resource type="Texture2D" uid="uid://bwshrsk0kl0m0" path="res://Other_Files/sword idle.png.png" id="1_d5olu"]
+[ext_resource type="Script" uid="uid://bvuxhloe6s3ak" path="res://Equip/Dragable.gd" id="2_jkexe"]
+
+[node name="SwordIdle_png" type="Sprite2D" unique_id=1245867639]
+scale = Vector2(0.43125, 0.4)
+texture = ExtResource("1_d5olu")
+script = ExtResource("2_jkexe")
