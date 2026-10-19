@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://ba30rky7nqe2a"]
 
-[ext_resource type="Script" path="res://Upgrades/upgrades.gd" id="1_4b1pq"]
+[ext_resource type="Script" uid="uid://ba8e0ebaorsyt" path="res://Upgrades/upgrades.gd" id="1_4b1pq"]
 [ext_resource type="Texture2D" uid="uid://cfukwqm51cpmd" path="res://Other_Files/icon.svg" id="2_st27l"]
 
 [node name="Upgrades" type="Node2D" unique_id=1898568569]
