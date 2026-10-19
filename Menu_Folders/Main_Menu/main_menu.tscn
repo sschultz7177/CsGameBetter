@@ -1,23 +1,28 @@
 [gd_scene format=3 uid="uid://ddo8rna3fngyb"]
 
 [ext_resource type="Script" uid="uid://c3t7fc1ecert4" path="res://Menu_Folders/Main_Menu/Mainmenu.gd" id="1_cj4lk"]
+[ext_resource type="Texture2D" uid="uid://c0mt4drix5s00" path="res://Other_Files/start.png" id="2_y5csm"]
 
 [node name="MainMenu" type="Control" unique_id=270067914]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 2.0
+offset_right = 2.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_cj4lk")
 
 [node name="Start" type="Button" parent="." unique_id=981185794]
 layout_mode = 0
-offset_left = 2.0
-offset_top = 40.0
-offset_right = 65.0
-offset_bottom = 71.0
-text = "Start"
+offset_left = 465.0
+offset_top = 166.0
+offset_right = 657.0
+offset_bottom = 264.0
+text = "
+"
+icon = ExtResource("2_y5csm")
 
 [node name="Equip" type="Button" parent="." unique_id=1850980905]
 layout_mode = 0
