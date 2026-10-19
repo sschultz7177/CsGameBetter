@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://ddxfr5bv74ngw"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_iw1dx"]
+load_path = "res://.godot/imported/player base.png.png-f5fc3bb35d11748166aba5320bf8178d.ctex"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lk74j"]
+size = Vector2(235, 329)
+
+[node name="CharacterBody2D" type="CharacterBody2D" unique_id=673678371]
+collision_layer = 8
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=78855930]
+position = Vector2(2, -161)
+texture = SubResource("CompressedTexture2D_iw1dx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=699014400]
+visible = false
+position = Vector2(20, -166)
+shape = SubResource("RectangleShape2D_lk74j")
