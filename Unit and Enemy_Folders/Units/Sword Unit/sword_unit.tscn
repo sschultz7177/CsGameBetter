@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://bno0ev04ylapr"]
 
-[ext_resource type="Script" uid="uid://ddifbyse3286h" path="res://Unit and Enemy_Folders/Units/sword_unit (2).gd" id="1_v45yd"]
-[ext_resource type="Texture2D" uid="uid://byye08fcdy5pu" path="res://Unit and Enemy_Folders/Units/sword unit.png" id="2_aanxo"]
-[ext_resource type="Texture2D" uid="uid://b68qty472wuc3" path="res://Unit and Enemy_Folders/Units/sword unit (1).png" id="3_p0ipp"]
+[ext_resource type="Script" uid="uid://ddifbyse3286h" path="res://Unit and Enemy_Folders/Units/Sword Unit/sword_unit (2).gd" id="1_v45yd"]
+[ext_resource type="Texture2D" uid="uid://byye08fcdy5pu" path="res://Unit and Enemy_Folders/Units/Sword Unit/sword unit.png" id="2_aanxo"]
+[ext_resource type="Texture2D" uid="uid://b68qty472wuc3" path="res://Unit and Enemy_Folders/Units/Sword Unit/sword unit (1).png" id="3_p0ipp"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mu42q"]
 atlas = ExtResource("2_aanxo")
@@ -123,7 +123,11 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lk74j"]
 size = Vector2(150, 309.5)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_lk74j"]
+radius = 8621.837
+
 [node name="Sword unit" type="CharacterBody2D" unique_id=1605307685 groups=["units"]]
+collision_layer = 2
 script = ExtResource("1_v45yd")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1606454188]
@@ -133,5 +137,15 @@ animation = &"idle"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1880855755]
+visible = false
 position = Vector2(2, -157)
 shape = SubResource("RectangleShape2D_lk74j")
+
+[node name="DetectionArea" type="Area2D" parent="." unique_id=1826878132]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea" unique_id=1412333605]
+visible = false
+shape = SubResource("CircleShape2D_lk74j")
+debug_color = Color(0.23878607, 0.6371559, 0, 0.41960785)

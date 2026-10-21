@@ -33,10 +33,6 @@ folder_colors={
 "res://Unit and Enemy_Folders/": "purple"
 }
 
-[global_group]
-
-units=""
-
 [physics]
 
 3d/physics_engine="Jolt Physics"

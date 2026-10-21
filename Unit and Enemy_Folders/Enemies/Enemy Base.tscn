@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://bx30o85niv6dt"]
+
+[ext_resource type="Texture2D" uid="uid://d0pwelnwtaru4" path="res://Unit and Enemy_Folders/Enemies/enemy base.png.png" id="1_84jui"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lk74j"]
+size = Vector2(227, 340.5)
+
+[node name="CharacterBody2D" type="CharacterBody2D" unique_id=246855887]
+collision_layer = 16
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=569829901]
+position = Vector2(3, -160)
+texture = ExtResource("1_84jui")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1043340583]
+visible = false
+position = Vector2(-16, -171.75)
+shape = SubResource("RectangleShape2D_lk74j")
+debug_color = Color(0.7366128, 0.22553915, 0.99999994, 0.41960785)

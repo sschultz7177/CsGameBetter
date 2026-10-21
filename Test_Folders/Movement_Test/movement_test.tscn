@@ -1,13 +1,18 @@
 [gd_scene format=3 uid="uid://dqcko6ba3ycew"]
 
-[ext_resource type="PackedScene" uid="uid://d308gvoe6asmq" path="res://Test_Folders/Movement_Test/base_enemy.tscn" id="1_hlawd"]
-[ext_resource type="PackedScene" uid="uid://bno0ev04ylapr" path="res://Test_Folders/Movement_Test/sword_unit.tscn" id="3_jo0ep"]
+[ext_resource type="PackedScene" uid="uid://d308gvoe6asmq" path="res://Unit and Enemy_Folders/Enemies/Basic Enemy/base_enemy.tscn" id="1_hlawd"]
+[ext_resource type="PackedScene" uid="uid://bno0ev04ylapr" path="res://Unit and Enemy_Folders/Units/Sword Unit/sword_unit.tscn" id="3_jo0ep"]
 
 [node name="Movement_Test" type="Node2D" unique_id=1454334552]
 
-[node name="BaseEnemy" parent="." unique_id=1159031697 node_paths=PackedStringArray("unit") instance=ExtResource("1_hlawd")]
-position = Vector2(93, 646)
-unit = NodePath("../Sword unit")
+[node name="BaseEnemy" parent="." unique_id=1159031697 instance=ExtResource("1_hlawd")]
+position = Vector2(92, 645)
 
 [node name="Sword unit" parent="." unique_id=1605307685 instance=ExtResource("3_jo0ep")]
-position = Vector2(661, 646)
+position = Vector2(981, 336)
+
+[node name="Sword unit2" parent="." unique_id=678813523 instance=ExtResource("3_jo0ep")]
+position = Vector2(980, 651)
+
+[node name="BaseEnemy2" parent="." unique_id=452699409 instance=ExtResource("1_hlawd")]
+position = Vector2(92, 319)
