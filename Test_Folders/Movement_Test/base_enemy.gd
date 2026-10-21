@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
-const SPEED = 300
-const STOP_DISTANCE = 600
+var SPEED = 200
+var STOP_DISTANCE = 600
 enum State {Idle, Walk, Attack}
 var current_state : State
 
@@ -11,6 +11,9 @@ var current_state : State
 var current_target: CharacterBody2D = null
 
 func _ready():
+	var adjust: float = scale.x
+	STOP_DISTANCE *= adjust
+	SPEED *= adjust
 	current_state = State.Idle
 
 func _physics_process(delta: float):

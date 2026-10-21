@@ -149,3 +149,7 @@ collision_mask = 4
 visible = false
 shape = SubResource("CircleShape2D_lk74j")
 debug_color = Color(0.23878607, 0.6371559, 0, 0.41960785)
+
+[node name="AttackCooldown" type="Timer" parent="." unique_id=883142393]
+wait_time = 0.5
+one_shot = true

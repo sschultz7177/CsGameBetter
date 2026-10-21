@@ -1,19 +1,26 @@
 extends CharacterBody2D
 
-const SPEED = 300
-const STOP_DISTANCE = 220
+var SPEED = 300
+var STOP_DISTANCE = 220
 enum State {Idle, Walk, Attack}
 var current_state : State
+
+
 
 # This creates a slot in the Godot inspector panel
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var detection_area: Area2D = $DetectionArea
+@onready var cooldown : Timer = $AttackCooldown
 var current_target: CharacterBody2D = null
 
 func _ready():
+	var adjust: float = scale.x
+	STOP_DISTANCE *= adjust
+	SPEED *= adjust
 	current_state = State.Idle
 
 func _physics_process(delta: float):
+	
 	current_target = get_closest_target()
 
 	if not current_target:
@@ -57,5 +64,10 @@ func unit_walk(move_direction: Vector2):
 
 func unit_attack():
 	velocity = Vector2.ZERO
+	if not cooldown.is_stopped():
+		return
 	current_state = State.Attack
 	animated_sprite.play("attack")
+	cooldown.start()
+	unit_idle()
+	

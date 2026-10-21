@@ -6,20 +6,19 @@
 [ext_resource type="PackedScene" uid="uid://d308gvoe6asmq" path="res://Unit and Enemy_Folders/Enemies/Basic Enemy/base_enemy.tscn" id="4_ixv1a"]
 
 [node name="InLevelTest" type="Node2D" unique_id=1539801423]
-scale = Vector2(0.333, 0.333)
 
 [node name="Sword unit" parent="." unique_id=1605307685 instance=ExtResource("1_kl124")]
-position = Vector2(2786.7869, 1957.9579)
+position = Vector2(944, 651)
+scale = Vector2(0.33, 0.33)
 
 [node name="CharacterBody2D" parent="." unique_id=673678371 instance=ExtResource("2_h086h")]
-light_mask = 2
-visibility_layer = 2
-position = Vector2(3168.1682, 1942.9429)
-scale = Vector2(2, 2)
+position = Vector2(1046, 650)
+scale = Vector2(0.75, 0.75)
 
 [node name="CharacterBody2D2" parent="." unique_id=246855887 instance=ExtResource("3_uu02g")]
-position = Vector2(273.2733, 1942.943)
-scale = Vector2(2, 2)
+position = Vector2(105, 648)
+scale = Vector2(0.75, 0.75)
 
 [node name="BaseEnemy" parent="." unique_id=1159031697 instance=ExtResource("4_ixv1a")]
-position = Vector2(618.6186, 1918.9188)
+position = Vector2(219, 646)
+scale = Vector2(0.33, 0.33)
