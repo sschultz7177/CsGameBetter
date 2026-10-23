@@ -1,21 +1,38 @@
 [gd_scene format=3 uid="uid://djlv3slya6fy4"]
 
+[ext_resource type="Script" uid="uid://bknjjoux5cmv5" path="res://Test_Folders/In Level Test/in_level_test.gd" id="1_h086h"]
 [ext_resource type="PackedScene" uid="uid://bno0ev04ylapr" path="res://Unit and Enemy_Folders/Units/Sword Unit/sword_unit.tscn" id="1_kl124"]
 [ext_resource type="PackedScene" uid="uid://ddxfr5bv74ngw" path="res://Unit and Enemy_Folders/Units/Player Base.tscn" id="2_h086h"]
 [ext_resource type="PackedScene" uid="uid://bx30o85niv6dt" path="res://Unit and Enemy_Folders/Enemies/Enemy Base.tscn" id="3_uu02g"]
 [ext_resource type="PackedScene" uid="uid://d308gvoe6asmq" path="res://Unit and Enemy_Folders/Enemies/Basic Enemy/base_enemy.tscn" id="4_ixv1a"]
+[ext_resource type="Script" uid="uid://bqvxfouwbxfjg" path="res://Unit and Enemy_Folders/Units/player_base.gd" id="4_uu02g"]
 
 [node name="InLevelTest" type="Node2D" unique_id=1539801423]
-scale = Vector2(0.8, 0.8)
+script = ExtResource("1_h086h")
 
 [node name="Sword unit" parent="." unique_id=1605307685 instance=ExtResource("1_kl124")]
 position = Vector2(1090, 678.75)
 
 [node name="CharacterBody2D" parent="." unique_id=673678371 instance=ExtResource("2_h086h")]
-position = Vector2(1298.75, 670)
+position = Vector2(1051, 479)
+scale = Vector2(0.75, 0.75)
+script = ExtResource("4_uu02g")
 
 [node name="CharacterBody2D2" parent="." unique_id=246855887 instance=ExtResource("3_uu02g")]
 position = Vector2(133.75, 682.5)
 
 [node name="BaseEnemy" parent="." unique_id=1159031697 instance=ExtResource("4_ixv1a")]
 position = Vector2(310, 676.25)
+
+[node name="Button" type="Button" parent="." unique_id=87316449]
+offset_left = 988.0
+offset_top = 79.0
+offset_right = 1126.0
+offset_bottom = 131.0
+text = "Spawn character"
+
+[node name="Marker2D" type="Marker2D" parent="." unique_id=1642942569]
+position = Vector2(1060, 505.00003)
+scale = Vector2(0.33, 0.33)
+
+[connection signal="pressed" from="Button" to="CharacterBody2D" method="_on_button_pressed"]
