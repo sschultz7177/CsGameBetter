@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://d308gvoe6asmq"]
 
-[ext_resource type="Script" uid="uid://cbtw5m7eciog4" path="res://Test_Folders/Movement_Test/base_enemy.gd" id="1_uu1nm"]
+[ext_resource type="Script" uid="uid://cbtw5m7eciog4" path="res://Unit and Enemy_Folders/Enemies/base_enemy.gd" id="1_uu1nm"]
 [ext_resource type="Texture2D" uid="uid://b5ijmw6tnor21" path="res://Unit and Enemy_Folders/Enemies/Basic Enemy/basic enemy.png" id="2_sb1aa"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fpp71"]
