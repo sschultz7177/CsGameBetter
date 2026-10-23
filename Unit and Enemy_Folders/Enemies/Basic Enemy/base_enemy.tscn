@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://d308gvoe6asmq"]
 
-[ext_resource type="Script" uid="uid://cbtw5m7eciog4" path="res://Test_Folders/Movement_Test/base_enemy.gd" id="1_uu1nm"]
+[ext_resource type="Script" uid="uid://cbtw5m7eciog4" path="res://Unit and Enemy_Folders/Enemies/Basic Enemy/base_enemy.gd" id="1_uu1nm"]
 [ext_resource type="Texture2D" uid="uid://b5ijmw6tnor21" path="res://Unit and Enemy_Folders/Enemies/Basic Enemy/basic enemy.png" id="2_sb1aa"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fpp71"]
@@ -191,7 +191,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_n3ps2")
 }],
-"loop": 1,
+"loop": 0,
 "name": &"attack",
 "speed": 7.0
 }, {
@@ -202,7 +202,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_sb1aa")
 }],
-"loop": 1,
+"loop": 0,
 "name": &"idle",
 "speed": 2.0
 }, {
@@ -219,7 +219,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_yauxh")
 }],
-"loop": 1,
+"loop": 0,
 "name": &"move",
 "speed": 7.0
 }]
@@ -237,7 +237,7 @@ script = ExtResource("1_uu1nm")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1567447587]
 position = Vector2(204, -160)
 sprite_frames = SubResource("SpriteFrames_lk74j")
-animation = &"idle"
+animation = &"attack"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=575384099]
@@ -254,3 +254,7 @@ collision_mask = 2
 visible = false
 shape = SubResource("CircleShape2D_lk74j")
 debug_color = Color(0.74895364, 0.4608791, 3.85046e-07, 0.41960785)
+
+[node name="AttackCooldown" type="Timer" parent="." unique_id=781135872]
+wait_time = 7.213
+one_shot = true

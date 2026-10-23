@@ -6,19 +6,16 @@
 [ext_resource type="PackedScene" uid="uid://d308gvoe6asmq" path="res://Unit and Enemy_Folders/Enemies/Basic Enemy/base_enemy.tscn" id="4_ixv1a"]
 
 [node name="InLevelTest" type="Node2D" unique_id=1539801423]
+scale = Vector2(0.8, 0.8)
 
 [node name="Sword unit" parent="." unique_id=1605307685 instance=ExtResource("1_kl124")]
-position = Vector2(939, 482)
-scale = Vector2(0.33, 0.33)
+position = Vector2(1090, 678.75)
 
 [node name="CharacterBody2D" parent="." unique_id=673678371 instance=ExtResource("2_h086h")]
-position = Vector2(1051, 479)
-scale = Vector2(0.75, 0.75)
+position = Vector2(1298.75, 670)
 
 [node name="CharacterBody2D2" parent="." unique_id=246855887 instance=ExtResource("3_uu02g")]
-position = Vector2(101, 481)
-scale = Vector2(0.75, 0.75)
+position = Vector2(133.75, 682.5)
 
 [node name="BaseEnemy" parent="." unique_id=1159031697 instance=ExtResource("4_ixv1a")]
-position = Vector2(212.00002, 479)
-scale = Vector2(0.33, 0.33)
+position = Vector2(310, 676.25)
