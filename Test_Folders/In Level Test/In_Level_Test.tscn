@@ -8,17 +8,17 @@
 [node name="InLevelTest" type="Node2D" unique_id=1539801423]
 
 [node name="Sword unit" parent="." unique_id=1605307685 instance=ExtResource("1_kl124")]
-position = Vector2(944, 651)
+position = Vector2(939, 482)
 scale = Vector2(0.33, 0.33)
 
 [node name="CharacterBody2D" parent="." unique_id=673678371 instance=ExtResource("2_h086h")]
-position = Vector2(1046, 650)
+position = Vector2(1051, 479)
 scale = Vector2(0.75, 0.75)
 
 [node name="CharacterBody2D2" parent="." unique_id=246855887 instance=ExtResource("3_uu02g")]
-position = Vector2(105, 648)
+position = Vector2(101, 481)
 scale = Vector2(0.75, 0.75)
 
 [node name="BaseEnemy" parent="." unique_id=1159031697 instance=ExtResource("4_ixv1a")]
-position = Vector2(219, 646)
+position = Vector2(212.00002, 479)
 scale = Vector2(0.33, 0.33)

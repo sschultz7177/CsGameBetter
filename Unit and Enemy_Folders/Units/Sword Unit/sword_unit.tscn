@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://ddifbyse3286h" path="res://Unit and Enemy_Folders/Units/Sword Unit/sword_unit (2).gd" id="1_v45yd"]
 [ext_resource type="Texture2D" uid="uid://byye08fcdy5pu" path="res://Unit and Enemy_Folders/Units/Sword Unit/sword unit.png" id="2_aanxo"]
 [ext_resource type="Texture2D" uid="uid://b68qty472wuc3" path="res://Unit and Enemy_Folders/Units/Sword Unit/sword unit (1).png" id="3_p0ipp"]
+[ext_resource type="Script" uid="uid://d17ft0q76sogr" path="res://Unit and Enemy_Folders/Units/Sword Unit/attack_cooldown.gd" id="4_0sabc"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mu42q"]
 atlas = ExtResource("2_aanxo")
@@ -126,7 +127,7 @@ size = Vector2(150, 309.5)
 [sub_resource type="CircleShape2D" id="CircleShape2D_lk74j"]
 radius = 8621.837
 
-[node name="Sword unit" type="CharacterBody2D" unique_id=1605307685 groups=["units"]]
+[node name="Sword unit" type="CharacterBody2D" unique_id=1605307685]
 collision_layer = 2
 script = ExtResource("1_v45yd")
 
@@ -151,5 +152,8 @@ shape = SubResource("CircleShape2D_lk74j")
 debug_color = Color(0.23878607, 0.6371559, 0, 0.41960785)
 
 [node name="AttackCooldown" type="Timer" parent="." unique_id=883142393]
-wait_time = 0.5
+wait_time = 4.051
 one_shot = true
+script = ExtResource("4_0sabc")
+
+[connection signal="timeout" from="AttackCooldown" to="." method="_on_attack_cooldown_timeout"]

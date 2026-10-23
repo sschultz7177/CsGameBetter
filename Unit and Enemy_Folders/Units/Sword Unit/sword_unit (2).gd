@@ -69,5 +69,4 @@ func unit_attack():
 	current_state = State.Attack
 	animated_sprite.play("attack")
 	cooldown.start()
-	unit_idle()
 	
