@@ -5,43 +5,46 @@ var STOP_DISTANCE = 220
 enum State {Idle, Walk, Attack}
 var current_state : State
 
-
-
-# This creates a slot in the Godot inspector panel
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var detection_area: Area2D = $DetectionArea
 @onready var cooldown : Timer = $AttackCooldown
+
 var current_target: CharacterBody2D = null
 
 func _ready():
 	var adjust: float = scale.x
+	
 	STOP_DISTANCE *= adjust
 	SPEED *= adjust
 	current_state = State.Idle
+	animated_sprite.animation_finished.connect(_on_animated_sprite_2d_animation_finished)
 
 func _physics_process(delta: float):
-	
-	current_target = get_closest_target()
+	match current_state:
+		State.Attack:
 
-	if not current_target:
-		unit_idle()
-		move_and_slide()
-		return
-		
-	var dist : float = global_position.distance_to(current_target.global_position)
-	
-	if dist > STOP_DISTANCE:
-		var move_direction: Vector2 = global_position.direction_to(current_target.global_position)
-		unit_walk(move_direction)
-	else:
-		unit_attack()
-	
-	move_and_slide()
+			velocity = Vector2.ZERO
+			move_and_slide()
+			
+		State.Idle, State.Walk:
+			current_target = get_closest_target()
+
+			if not current_target:
+				unit_idle()
+				move_and_slide()
+			else:
+				var dist : float = global_position.distance_to(current_target.global_position)
+				if dist > STOP_DISTANCE:
+					var move_direction: Vector2 = global_position.direction_to(current_target.global_position)
+					unit_walk(move_direction)
+					move_and_slide()
+				else:
+					unit_attack()
 
 func get_closest_target() -> CharacterBody2D:
 	var overlapping_bodies = detection_area.get_overlapping_bodies()
 	var closest_unit: CharacterBody2D = null
-	var shortest_distance: float = INF # Start at infinity
+	var shortest_distance: float = INF
 	
 	for body in overlapping_bodies:
 		if body is CharacterBody2D and body != self:
@@ -63,10 +66,18 @@ func unit_walk(move_direction: Vector2):
 	animated_sprite.play("move")
 
 func unit_attack():
-	velocity = Vector2.ZERO
+
 	if not cooldown.is_stopped():
+		unit_idle() 
 		return
+		
+
+	velocity = Vector2.ZERO
 	current_state = State.Attack
 	animated_sprite.play("attack")
-	cooldown.start()
-	
+	cooldown.start() 
+
+func _on_animated_sprite_2d_animation_finished() -> void:
+	if current_state == State.Attack:
+		current_state = State.Idle
+		animated_sprite.play("idle")
