@@ -82,7 +82,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_b1y1d")
 }],
-"loop": 1,
+"loop": 0,
 "name": &"attack",
 "speed": 9.0
 }, {
@@ -93,7 +93,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_mq7jf")
 }],
-"loop": 1,
+"loop": 0,
 "name": &"idle",
 "speed": 5.0
 }, {
@@ -116,7 +116,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_ud4hm")
 }],
-"loop": 1,
+"loop": 0,
 "name": &"move",
 "speed": 9.0
 }]
@@ -127,14 +127,14 @@ size = Vector2(150, 309.5)
 [sub_resource type="CircleShape2D" id="CircleShape2D_lk74j"]
 radius = 8621.837
 
-[node name="Sword unit" type="CharacterBody2D" unique_id=1605307685]
+[node name="Sword unit" type="CharacterBody2D" unique_id=1605307685 groups=["units"]]
 collision_layer = 2
 script = ExtResource("1_v45yd")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1606454188]
 position = Vector2(2, -165)
 sprite_frames = SubResource("SpriteFrames_r3rgl")
-animation = &"idle"
+animation = &"move"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1880855755]
@@ -152,8 +152,9 @@ shape = SubResource("CircleShape2D_lk74j")
 debug_color = Color(0.23878607, 0.6371559, 0, 0.41960785)
 
 [node name="AttackCooldown" type="Timer" parent="." unique_id=883142393]
-wait_time = 4.051
+wait_time = 2.0
 one_shot = true
 script = ExtResource("4_0sabc")
 
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="timeout" from="AttackCooldown" to="." method="_on_attack_cooldown_timeout"]
