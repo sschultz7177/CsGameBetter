@@ -3,9 +3,6 @@ extends CharacterBody2D
 const Sword_unit = preload("res://Unit and Enemy_Folders/Units/Sword Unit/sword_unit.tscn")
 
 
-# 1. FIXED: Changed $Marker3D to $Marker2D to match your 2D project setup
-@onready var spawn_point: Marker2D = $Marker2D
-
 func _on_button_pressed() -> void:
 	# Instantiate the scene
 	var new_object = Sword_unit.instantiate()

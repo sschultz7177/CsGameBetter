@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://byye08fcdy5pu" path="res://Unit and Enemy_Folders/Units/Sword Unit/sword unit.png" id="2_aanxo"]
 [ext_resource type="Texture2D" uid="uid://b68qty472wuc3" path="res://Unit and Enemy_Folders/Units/Sword Unit/sword unit (1).png" id="3_p0ipp"]
 [ext_resource type="Script" uid="uid://d17ft0q76sogr" path="res://Unit and Enemy_Folders/Units/Sword Unit/attack_cooldown.gd" id="4_0sabc"]
+[ext_resource type="Script" uid="uid://cuo37hmahr7sk" path="res://Test_Folders/In Level Test/Health.gd" id="5_3t6q4"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mu42q"]
 atlas = ExtResource("2_aanxo")
@@ -127,6 +128,12 @@ size = Vector2(150, 309.5)
 [sub_resource type="CircleShape2D" id="CircleShape2D_lk74j"]
 radius = 8621.837
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r3rgl"]
+size = Vector2(221, 377)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uvtap"]
+size = Vector2(141, 312)
+
 [node name="Sword unit" type="CharacterBody2D" unique_id=1605307685 groups=["units"]]
 collision_layer = 2
 script = ExtResource("1_v45yd")
@@ -134,7 +141,7 @@ script = ExtResource("1_v45yd")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1606454188]
 position = Vector2(2, -165)
 sprite_frames = SubResource("SpriteFrames_r3rgl")
-animation = &"move"
+animation = &"idle"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1880855755]
@@ -155,6 +162,23 @@ debug_color = Color(0.23878607, 0.6371559, 0, 0.41960785)
 wait_time = 2.0
 one_shot = true
 script = ExtResource("4_0sabc")
+
+[node name="Health" type="Node" parent="." unique_id=450757762]
+script = ExtResource("5_3t6q4")
+max = 50
+
+[node name="Hitbox" type="Area2D" parent="." unique_id=1079600753]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=1397071505]
+position = Vector2(-115.5, -192)
+shape = SubResource("RectangleShape2D_r3rgl")
+
+[node name="Hurtbox" type="Area2D" parent="." unique_id=1395536150]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=1011329433]
+visible = false
+position = Vector2(0.5, -160)
+shape = SubResource("RectangleShape2D_uvtap")
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="timeout" from="AttackCooldown" to="." method="_on_attack_cooldown_timeout"]

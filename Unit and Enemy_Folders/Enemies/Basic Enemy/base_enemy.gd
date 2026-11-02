@@ -4,6 +4,8 @@ var SPEED = 150
 var STOP_DISTANCE = 450
 enum State {Idle, Walk, Attack}
 var current_state : State
+@export var damage_amount : int = 40
+@onready var hitbox: Area2D = $Hitbox  
 
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var detection_area: Area2D = $DetectionArea
@@ -16,11 +18,12 @@ func _ready():
 	SPEED *= adjust
 	current_state = State.Idle
 	animated_sprite.animation_finished.connect(_on_animated_sprite_2d_animation_finished)
+	if hitbox:
+		hitbox.monitoring = false 
 
 func _physics_process(delta: float):
 	match current_state:
 		State.Attack:
-
 			velocity = Vector2.ZERO
 			move_and_slide()
 			
@@ -64,18 +67,33 @@ func enemy_walk(move_direction: Vector2):
 	animated_sprite.play("move")
 
 func enemy_attack():
-
 	if not cooldown.is_stopped():
 		enemy_idle() 
 		return
-		
 
 	velocity = Vector2.ZERO
 	current_state = State.Attack
 	animated_sprite.play("attack")
+	if hitbox:
+		hitbox.monitoring = true
+		
 	cooldown.start() 
 
 func _on_animated_sprite_2d_animation_finished() -> void:
 	if current_state == State.Attack:
+		if hitbox:
+			hitbox.monitoring = false
+			
 		current_state = State.Idle
 		animated_sprite.play("idle")
+
+func _on_hitbox_area_entered(area: Area2D) -> void:
+	if area.name == "Hurtbox":
+		var target_parent = area.get_parent()
+		if target_parent:
+			# Look for a child node named "Health"
+			var target_health = target_parent.get_node_or_null("Health")
+			
+			# Check if it has the take_damage function instead of checking the class name
+			if target_health and target_health.has_method("take_damage"):
+				target_health.take_damage(damage_amount)

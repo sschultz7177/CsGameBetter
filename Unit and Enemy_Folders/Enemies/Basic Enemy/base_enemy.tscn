@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bab3gas10x0sy" path="res://Unit and Enemy_Folders/Enemies/Basic Enemy/base_enemy.gd" id="1_uu1nm"]
 [ext_resource type="Texture2D" uid="uid://b5ijmw6tnor21" path="res://Unit and Enemy_Folders/Enemies/Basic Enemy/basic enemy.png" id="2_sb1aa"]
+[ext_resource type="Script" uid="uid://cuo37hmahr7sk" path="res://Test_Folders/In Level Test/Health.gd" id="3_5al4y"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fpp71"]
 atlas = ExtResource("2_sb1aa")
@@ -230,6 +231,12 @@ size = Vector2(154, 322)
 [sub_resource type="CircleShape2D" id="CircleShape2D_lk74j"]
 radius = 20348.115
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lk74j"]
+size = Vector2(573, 300)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uvtap"]
+size = Vector2(171, 331)
+
 [node name="BaseEnemy" type="CharacterBody2D" unique_id=1159031697]
 collision_layer = 4
 script = ExtResource("1_uu1nm")
@@ -239,6 +246,8 @@ position = Vector2(204, -160)
 sprite_frames = SubResource("SpriteFrames_lk74j")
 animation = &"attack"
 autoplay = "idle"
+frame = 12
+frame_progress = 0.07961774
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=575384099]
 visible = false
@@ -258,3 +267,19 @@ debug_color = Color(0.74895364, 0.4608791, 3.85046e-07, 0.41960785)
 [node name="AttackCooldown" type="Timer" parent="." unique_id=781135872]
 wait_time = 7.213
 one_shot = true
+
+[node name="Health" type="Node" parent="." unique_id=703622964]
+script = ExtResource("3_5al4y")
+
+[node name="Hitbox" type="Area2D" parent="." unique_id=397374551]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=1764681016]
+position = Vector2(288.5, -152)
+shape = SubResource("RectangleShape2D_lk74j")
+
+[node name="Hurtbox2" type="Area2D" parent="." unique_id=1763011001]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox2" unique_id=657461482]
+visible = false
+position = Vector2(15.5, -155.5)
+shape = SubResource("RectangleShape2D_uvtap")
