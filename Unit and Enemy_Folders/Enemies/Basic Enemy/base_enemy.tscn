@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://d308gvoe6asmq"]
 
-[ext_resource type="Script" uid="uid://cbtw5m7eciog4" path="res://Unit and Enemy_Folders/Enemies/Basic Enemy/base_enemy.gd" id="1_uu1nm"]
+[ext_resource type="Script" uid="uid://bab3gas10x0sy" path="res://Unit and Enemy_Folders/Enemies/Basic Enemy/base_enemy.gd" id="1_uu1nm"]
 [ext_resource type="Texture2D" uid="uid://b5ijmw6tnor21" path="res://Unit and Enemy_Folders/Enemies/Basic Enemy/basic enemy.png" id="2_sb1aa"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fpp71"]
@@ -146,10 +146,10 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_8e1j7")
 }, {
-"duration": 1.0,
+"duration": 0.4,
 "texture": SubResource("AtlasTexture_ujp63")
 }, {
-"duration": 1.0,
+"duration": 0.4,
 "texture": SubResource("AtlasTexture_ptuam")
 }, {
 "duration": 1.0,

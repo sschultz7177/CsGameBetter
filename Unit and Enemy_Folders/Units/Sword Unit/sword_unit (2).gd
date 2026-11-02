@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 var SPEED = 300
 var STOP_DISTANCE = 220
+
 enum State {Idle, Walk, Attack}
 var current_state : State
 
