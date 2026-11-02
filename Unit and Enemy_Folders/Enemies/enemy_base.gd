@@ -3,10 +3,6 @@ extends CharacterBody2D
 const basic_enemy = preload("res://Unit and Enemy_Folders/Enemies/Basic Enemy/base_enemy.tscn")
 
 
-# 1. FIXED: Changed $Marker3D to $Marker2D to match your 2D project setup
-@onready var spawn_point: Marker2D = $Marker2D2
-
-
 func _on_timer_timeout() -> void:
 		# Instantiate the scene
 	var new_object = basic_enemy.instantiate()

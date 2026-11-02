@@ -14,6 +14,16 @@ position = Vector2(1051, 479)
 scale = Vector2(0.75, 0.75)
 script = ExtResource("4_uu02g")
 
+[node name="Label" type="Label" parent="CharacterBody2D" unique_id=1135156609]
+offset_left = -1401.3334
+offset_top = -638.6667
+offset_right = -1361.3334
+offset_bottom = -615.6667
+
+[node name="Timer" type="Timer" parent="CharacterBody2D" unique_id=1772635595]
+wait_time = 0.25
+autostart = true
+
 [node name="CharacterBody2D2" parent="." unique_id=246855887 instance=ExtResource("3_uu02g")]
 position = Vector2(106, 498)
 scale = Vector2(0.75, 0.75)
@@ -29,11 +39,12 @@ offset_right = 1126.0
 offset_bottom = 131.0
 text = "Spawn character"
 
-[node name="Marker2D" type="Marker2D" parent="." unique_id=1642942569]
-position = Vector2(1060, 505.00003)
-scale = Vector2(0.33, 0.33)
-
-[node name="Marker2D2" type="Marker2D" parent="." unique_id=735076181]
-position = Vector2(106, 501)
+[node name="MoneyUpgrade" type="Button" parent="." unique_id=1268664960]
+offset_left = 556.0
+offset_top = 72.0
+offset_right = 647.0
+offset_bottom = 119.0
+text = "Money upgrade"
 
 [connection signal="pressed" from="Button" to="CharacterBody2D" method="_on_button_pressed"]
+[connection signal="pressed" from="MoneyUpgrade" to="CharacterBody2D" method="_on_money_upgrade_pressed"]
