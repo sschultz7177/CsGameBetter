@@ -1,7 +1,7 @@
 extends Node
 
 const save_file_name: String = "user://save_file_count.json"
-const default_dictionary: Dictionary = {"Clicks:": 0}
+const default_dictionary: Dictionary = {"Clicks:": 0, "upgrade:": 0}
 
 func save_game (data: Dictionary) -> void:
 	var save_file: FileAccess = FileAccess.open(save_file_name, FileAccess.WRITE)
