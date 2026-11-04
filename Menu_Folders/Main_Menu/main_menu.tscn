@@ -62,8 +62,17 @@ offset_right = -15.944008
 offset_bottom = -53.175995
 text = "Quit"
 
+[node name="TestScene" type="Button" parent="." unique_id=1037470657]
+layout_mode = 0
+offset_left = 949.0
+offset_top = 543.0
+offset_right = 1067.0
+offset_bottom = 599.0
+text = "Test Scene"
+
 [connection signal="pressed" from="Start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="Equip" to="." method="_on_equip_pressed"]
 [connection signal="pressed" from="Upgrades" to="." method="_on_upgrades_pressed"]
 [connection signal="pressed" from="Settings" to="." method="_on_settings_pressed"]
 [connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="TestScene" to="." method="_on_test_scene_pressed"]

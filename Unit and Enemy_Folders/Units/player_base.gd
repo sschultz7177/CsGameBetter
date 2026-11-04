@@ -24,7 +24,9 @@ func update_money_display() -> void:
 const Sword_unit = preload("res://Unit and Enemy_Folders/Units/Sword Unit/sword_unit.tscn")
 
 func _on_money_upgrade_pressed() -> void:
-	MoneyUpgrade = 1
+	if money >= 60:
+		money -= 60
+		MoneyUpgrade = 1
 
 
 func _on_button_pressed() -> void:

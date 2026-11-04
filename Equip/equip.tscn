@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dqmv4htti1tl2"]
 
-[ext_resource type="Script" uid="uid://0o4lihx6xy0w" path="res://Equip/Equip.gd" id="1_a6hpc"]
+[ext_resource type="Script" uid="uid://0o4lihx6xy0w" path="res://Equip/equip.gd" id="1_a6hpc"]
 [ext_resource type="Texture2D" uid="uid://d0dj317tt8l0n" path="res://Other_Files/New Piskel-1.png (5).png" id="2_pgltj"]
 [ext_resource type="PackedScene" uid="uid://c0ngeuvo6wb48" path="res://Equip/Dragable.tscn" id="3_tp4f1"]
 

@@ -11,13 +11,14 @@ config_version=5
 [application]
 
 config/name="CSgame"
-run/main_scene="uid://djlv3slya6fy4"
+run/main_scene="uid://8myye4u2d5td"
 config/features=PackedStringArray("4.7", "Forward Plus")
 config/icon="res://Other_Files/icon.svg"
 
 [autoload]
 
 AutosaveScript="*uid://c7hrrgk6hyhyw"
+GlobalScript="*uid://dtpdsctald00f"
 
 [display]
 
