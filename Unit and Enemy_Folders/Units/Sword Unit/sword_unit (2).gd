@@ -1,53 +1,66 @@
 extends CharacterBody2D
 
-var SPEED = 300
-var STOP_DISTANCE = 180
+@export var SPEED: float = 300.0
+@export var STOP_DISTANCE: float = 180.0
+@export var damage_amount: int = 40
 
-enum State {Idle, Walk, Attack}
-var current_state : State
-
-@onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
-@onready var detection_area: Area2D = $DetectionArea
-@onready var cooldown : Timer = $AttackCooldown
-@export var damage_amount : int = 20
-@onready var hitbox: Area2D = $Hitbox  
-
+enum State {IDLE, WALK, ATTACK}
+var current_state: State = State.IDLE
 var current_target: CharacterBody2D = null
 
-func _ready():
+@onready var hitbox: Area2D = $Hitbox
+@onready var hurtbox: Area2D = $Hurtbox
+@onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
+@onready var detection_area: Area2D = $DetectionArea
+@onready var cooldown: Timer = $AttackCooldown
+@onready var health_node = $Health
+
+func _ready() -> void:
+	# Clean up scaling factors safely
 	var adjust: float = scale.x
-	
 	STOP_DISTANCE *= adjust
 	SPEED *= adjust
-	current_state = State.Idle
-	animated_sprite.animation_finished.connect(_on_animated_sprite_2d_animation_finished)
+	
+	# Connect frame animations securely
+	if not animated_sprite.animation_finished.is_connected(_on_animated_sprite_2d_animation_finished):
+		animated_sprite.animation_finished.connect(_on_animated_sprite_2d_animation_finished)
+	
+	# Keep tracking surfaces responsive on startup
 	if hitbox:
-		hitbox.monitoring = false 
+		hitbox.monitoring = true
+		hitbox.monitorable = true
+	if hurtbox:
+		hurtbox.monitoring = true
+		hurtbox.monitorable = true
 
+func _physics_process(_delta: float) -> void:
+	# Avoid evaluating state updates if locked in an un-cancelable attack animation frame
+	if current_state == State.ATTACK:
+		velocity = Vector2.ZERO
+		move_and_slide()
+		return
 
-func _physics_process(delta: float):
-	match current_state:
-		State.Attack:
-
-			velocity = Vector2.ZERO
-			move_and_slide()
+	current_target = get_closest_target()
+	
+	if not current_target:
+		velocity = Vector2.ZERO
+		current_state = State.IDLE
+		animated_sprite.play("idle")
+	else:
+		var distance_to_target = global_position.distance_to(current_target.global_position)
+		if distance_to_target > STOP_DISTANCE:
+			var move_direction = global_position.direction_to(current_target.global_position)
+			velocity = move_direction * SPEED
+			current_state = State.WALK
+			animated_sprite.play("move")
+		else:
+			trigger_attack_sequence()
 			
-		State.Idle, State.Walk:
-			current_target = get_closest_target()
-
-			if not current_target:
-				unit_idle()
-				move_and_slide()
-			else:
-				var dist : float = global_position.distance_to(current_target.global_position)
-				if dist > STOP_DISTANCE:
-					var move_direction: Vector2 = global_position.direction_to(current_target.global_position)
-					unit_walk(move_direction)
-					move_and_slide()
-				else:
-					unit_attack()
+	move_and_slide()
 
 func get_closest_target() -> CharacterBody2D:
+	if not detection_area: 
+		return null
 	var overlapping_bodies = detection_area.get_overlapping_bodies()
 	var closest_unit: CharacterBody2D = null
 	var shortest_distance: float = INF
@@ -58,48 +71,42 @@ func get_closest_target() -> CharacterBody2D:
 			if distance < shortest_distance:
 				shortest_distance = distance
 				closest_unit = body
-				
 	return closest_unit
 
-func unit_idle():
-	velocity = Vector2.ZERO
-	current_state = State.Idle
-	animated_sprite.play("idle")
-
-func unit_walk(move_direction: Vector2):
-	velocity = move_direction * SPEED
-	current_state = State.Walk
-	animated_sprite.play("move")
-
-func unit_attack():
-
+func trigger_attack_sequence() -> void:
 	if not cooldown.is_stopped():
-		unit_idle() 
+		velocity = Vector2.ZERO
+		current_state = State.IDLE
+		animated_sprite.play("idle")
 		return
 		
-
 	velocity = Vector2.ZERO
-	current_state = State.Attack
+	current_state = State.ATTACK
 	animated_sprite.play("attack")
-	if hitbox:
-		hitbox.monitoring = true
-	cooldown.start() 
+	cooldown.start()
 
 func _on_animated_sprite_2d_animation_finished() -> void:
-	if current_state == State.Attack:
-		if hitbox:
-			hitbox.monitoring = false
-		current_state = State.Idle
+	if current_state == State.ATTACK:
+		current_state = State.IDLE
 		animated_sprite.play("idle")
-		
 
+# Deals damage when our Hitbox impacts their Hurtbox
 func _on_hitbox_area_entered(area: Area2D) -> void:
-	if area.name == "Hurtbox":
+	print("Hitbox entered: ", area.name, " on parent: ", area.get_parent().name)
+	if area.name == "Hurtbox" or area.is_in_group("hurtbox"):
 		var target_parent = area.get_parent()
-		if target_parent:
-			# Look for a child node named "Health"
+		if target_parent and target_parent != self:
 			var target_health = target_parent.get_node_or_null("Health")
-			
-			# Check if it has the take_damage function instead of checking the class name
 			if target_health and target_health.has_method("take_damage"):
 				target_health.take_damage(damage_amount)
+
+# Handles absorbing damage when their Hitbox hits our Hurtbox
+func _on_hurtbox_area_entered(area: Area2D) -> void:
+	print("Hurtbox received hit from: ", area.name)
+	if area.name == "Hitbox" or area.is_in_group("hitbox"):
+		var target_parent = area.get_parent()
+		if target_parent and target_parent != self:
+			if "damage_amount" in target_parent:
+				var target_damage = target_parent.damage_amount
+				if health_node and health_node.has_method("take_damage"):
+					health_node.take_damage(target_damage)
