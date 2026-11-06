@@ -141,7 +141,7 @@ script = ExtResource("1_v45yd")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1606454188]
 position = Vector2(2, -165)
 sprite_frames = SubResource("SpriteFrames_r3rgl")
-animation = &"idle"
+animation = &"attack"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1880855755]
@@ -150,7 +150,7 @@ shape = SubResource("RectangleShape2D_lk74j")
 
 [node name="DetectionArea" type="Area2D" parent="." unique_id=1826878132]
 collision_layer = 0
-collision_mask = 4
+collision_mask = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea" unique_id=1412333605]
 visible = false
@@ -167,14 +167,16 @@ script = ExtResource("5_3t6q4")
 max = 50
 
 [node name="Hitbox" type="Area2D" parent="." unique_id=1079600753]
-collision_layer = 4
+collision_layer = 32
+collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=1397071505]
 position = Vector2(-115.5, -192)
 shape = SubResource("RectangleShape2D_r3rgl")
 
 [node name="Hurtbox" type="Area2D" parent="." unique_id=1395536150]
-collision_layer = 2
+collision_layer = 64
+collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=1011329433]
 visible = false
@@ -182,6 +184,7 @@ position = Vector2(0.5, -160)
 shape = SubResource("RectangleShape2D_uvtap")
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="frame_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_frame_changed"]
 [connection signal="timeout" from="AttackCooldown" to="." method="_on_attack_cooldown_timeout"]
 [connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]

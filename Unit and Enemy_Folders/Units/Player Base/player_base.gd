@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 var money: float = 0.0
-var money_per_second: float = 1
+var money_per_second: float = 500
 var MoneyUpgrade = 0
 @onready var label: Label = $Label 
 @onready var timer: Timer = $Timer
