@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 @export var SPEED: float = 300.0
 @export var STOP_DISTANCE: float = 150.0
-@export var damage_amount: int = 40
+@export var damage_amount: int = 10
 
 enum State {IDLE, WALK, ATTACK}
 var current_state: State = State.IDLE
@@ -16,7 +16,6 @@ var current_target: CharacterBody2D = null
 @onready var health_node = $Health
 
 func _ready() -> void:
-	# Clean up scaling factors safely
 	var adjust: float = scale.x
 	STOP_DISTANCE *= adjust
 	SPEED *= adjust
@@ -24,16 +23,14 @@ func _ready() -> void:
 	if not animated_sprite.animation_finished.is_connected(_on_animated_sprite_2d_animation_finished):
 		animated_sprite.animation_finished.connect(_on_animated_sprite_2d_animation_finished)
 		
-	# Keep hitboxes off by default
 	if hitbox:
-		hitbox.set_deferred("monitoring", false)
 		hitbox.monitorable = true
+		$Hitbox/HitboxShape.set_deferred("disabled", true)
 	if hurtbox:
 		hurtbox.monitoring = true
 		hurtbox.monitorable = true
 
 func _physics_process(_delta: float) -> void:
-	# Keep movement locked if currently actively swinging
 	if current_state == State.ATTACK:
 		velocity = Vector2.ZERO
 		move_and_slide()
@@ -82,7 +79,7 @@ func trigger_attack_sequence() -> void:
 	current_state = State.ATTACK
 	
 	if hitbox:
-		hitbox.set_deferred("monitoring", false)
+		$Hitbox/HitboxShape.set_deferred("disabled", true)
 	
 	animated_sprite.frame = 0
 	animated_sprite.play("attack")
@@ -94,9 +91,8 @@ func _on_animated_sprite_2d_animation_finished() -> void:
 		current_state = State.IDLE
 		animated_sprite.play("idle")
 		
-		# DEACTIVATE HITBOX: Turn it off instantly when the attack animation stops
 		if hitbox:
-			hitbox.set_deferred("monitoring", false)
+			$Hitbox/HitboxShape.set_deferred("disabled", true)
 
 # Deals damage when our Hitbox impacts their Hurtbox
 func _on_hitbox_area_entered(area: Area2D) -> void:
@@ -107,17 +103,8 @@ func _on_hitbox_area_entered(area: Area2D) -> void:
 			var target_health = target_parent.get_node_or_null("Health")
 			if target_health and target_health.has_method("take_damage"):
 				target_health.take_damage(damage_amount)
+				print(target_health.get_health())
 
-# Handles absorbing damage when their Hitbox hits our Hurtbox
-func _on_hurtbox_area_entered(area: Area2D) -> void:
-	print("Unit Hurtbox received hit from: ", area.name)
-	if area.name == "Hitbox" or area.is_in_group("hitbox"):
-		var target_parent = area.get_parent()
-		if target_parent and target_parent != self:
-			if "damage_amount" in target_parent:
-				var target_damage = target_parent.damage_amount
-				if health_node and health_node.has_method("take_damage"):
-					health_node.take_damage(target_damage)
 
 
 func _on_animated_sprite_2d_frame_changed() -> void:
@@ -127,8 +114,7 @@ func _on_animated_sprite_2d_frame_changed() -> void:
 		
 		if animated_sprite.frame == active_swing_frame:
 			if hitbox:
-				hitbox.set_deferred("monitoring", true)
+				$Hitbox/HitboxShape.set_deferred("disabled", false)
 		else:
-			# Turn it back off on any other frame so it doesn't linger
 			if hitbox:
-				hitbox.set_deferred("monitoring", false)
+				$Hitbox/HitboxShape.set_deferred("disabled", true)

@@ -3,8 +3,8 @@ var upgrade: int = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	var dict: Dictionary = AutosaveScript.load_game()
-	upgrade = dict["upgrade:"]
+	var dict2: Dictionary = AutosaveScript.load_game()
+	upgrade = dict2["upgrade:"]
 
 func _on_test_upgrade_pressed() -> void:
 	upgrade += 1     

@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-@export var SPEED: float = 150.0
+@export var SPEED: float = 400.0
 @export var STOP_DISTANCE: float = 450.0
 @export var damage_amount: int = 1
 
@@ -26,7 +26,7 @@ func _ready() -> void:
 		
 	# Keep hitboxes off by default
 	if hitbox:
-		hitbox.set_deferred("monitoring", false)
+		$Hitbox/HitboxShape.set_deferred("disabled", true)
 		hitbox.monitorable = true
 	if hurtbox:
 		hurtbox.monitoring = true
@@ -83,7 +83,7 @@ func trigger_attack_sequence() -> void:
 	current_state = State.ATTACK
 	
 	if hitbox:
-		hitbox.set_deferred("monitoring", false)
+		$Hitbox/HitboxShape.set_deferred("disabled", true)
 	
 	animated_sprite.frame = 0
 	animated_sprite.play("attack")
@@ -96,7 +96,7 @@ func _on_animated_sprite_2d_animation_finished() -> void:
 		animated_sprite.play("idle")
 		
 		if hitbox:
-			hitbox.set_deferred("monitoring", false)
+			$Hitbox/HitboxShape.set_deferred("disabled", true)
 
 func _on_hitbox_area_entered(area: Area2D) -> void:
 	print("Hitbox entered: ", area.name, " on parent: ", area.get_parent().name)
@@ -106,28 +106,29 @@ func _on_hitbox_area_entered(area: Area2D) -> void:
 			var target_health = target_parent.get_node_or_null("Health")
 			if target_health and target_health.has_method("take_damage"):
 				target_health.take_damage(damage_amount)
+				print(target_health.get_health())
 
-# Handles absorbing damage when their Hitbox hits our Hurtbox
-func _on_hurtbox_area_entered(area: Area2D) -> void:
-	print("Enemy Hurtbox received hit from: ", area.name)
-	if area.name == "Hitbox" or area.is_in_group("hitbox"):
-		var target_parent = area.get_parent()
-		if target_parent and target_parent != self:
-			if "damage_amount" in target_parent:
-				var target_damage = target_parent.damage_amount
-				if health_node and health_node.has_method("take_damage"):
-					health_node.take_damage(target_damage)
 
 
 func _on_animated_sprite_2d_frame_changed() -> void:
 	if current_state == State.ATTACK and animated_sprite.animation == "attack":
 		
-		var active_swing_frame: int = 13
+		var active_swing_frame1: int = 10
+		var active_swing_frame2: int = 13
+		var active_swing_frame3: int = 15
 		
-		if animated_sprite.frame == active_swing_frame:
+		if animated_sprite.frame == active_swing_frame1:
 			if hitbox:
-				hitbox.set_deferred("monitoring", true)
+				$Hitbox/HitboxShape.set_deferred("disabled", false)
+
+		elif animated_sprite.frame == active_swing_frame2:
+			if hitbox:
+				$Hitbox/HitboxShape.set_deferred("disabled", false)
+
+		elif animated_sprite.frame == active_swing_frame3:
+			if hitbox:
+				$Hitbox/HitboxShape.set_deferred("disabled", false)
+
 		else:
-			# Turn it back off on any other frame so it doesn't linger
 			if hitbox:
-				hitbox.set_deferred("monitoring", false)
+				$Hitbox/HitboxShape.set_deferred("disabled", true)

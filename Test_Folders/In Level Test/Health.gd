@@ -22,7 +22,9 @@ func take_damage(amount : int):
 	
 	if current <= 0:
 		die()
-	
+
+func get_health() -> int:
+	return current
 
 func die():
 	on_die.emit()

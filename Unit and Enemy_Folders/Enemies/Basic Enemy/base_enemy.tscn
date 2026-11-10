@@ -237,28 +237,6 @@ size = Vector2(583, 300)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uvtap"]
 size = Vector2(171, 331)
 
-[sub_resource type="Animation" id="Animation_5al4y"]
-resource_name = "attack"
-length = 0.5
-step = 0.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("AnimatedSprite2D:animation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(),
-"transitions": PackedFloat32Array(),
-"update": 1,
-"values": []
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_qtm3j"]
-_data = {
-&"attack": SubResource("Animation_5al4y")
-}
-
 [node name="BaseEnemy" type="CharacterBody2D" unique_id=1159031697]
 collision_layer = 16
 collision_mask = 2
@@ -296,9 +274,10 @@ script = ExtResource("3_5al4y")
 collision_layer = 4
 collision_mask = 64
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=1764681016]
+[node name="HitboxShape" type="CollisionShape2D" parent="Hitbox" unique_id=1764681016]
 position = Vector2(293.5, -152)
 shape = SubResource("RectangleShape2D_lk74j")
+disabled = true
 
 [node name="Hurtbox" type="Area2D" parent="." unique_id=1763011001 groups=["hurtbox"]]
 collision_layer = 8
@@ -308,9 +287,6 @@ collision_mask = 32
 visible = false
 position = Vector2(15.5, -155.5)
 shape = SubResource("RectangleShape2D_uvtap")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=333767991]
-libraries/ = SubResource("AnimationLibrary_qtm3j")
 
 [connection signal="frame_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_frame_changed"]
 [connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
