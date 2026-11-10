@@ -8,3 +8,4 @@ func _on_timer_timeout() -> void:
 	
 	new_object.scale = Vector2(.44, .44) 
 	add_child(new_object)
+	z_index = -10000

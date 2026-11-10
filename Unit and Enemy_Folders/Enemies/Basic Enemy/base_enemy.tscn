@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bab3gas10x0sy" path="res://Unit and Enemy_Folders/Enemies/Basic Enemy/base_enemy.gd" id="1_uu1nm"]
 [ext_resource type="Texture2D" uid="uid://b5ijmw6tnor21" path="res://Unit and Enemy_Folders/Enemies/Basic Enemy/basic enemy.png" id="2_sb1aa"]
+[ext_resource type="Script" uid="uid://cuo37hmahr7sk" path="res://Test_Folders/In Level Test/Health.gd" id="3_5al4y"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fpp71"]
 atlas = ExtResource("2_sb1aa")
@@ -155,10 +156,10 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_c1s0l")
 }, {
-"duration": 1.0,
+"duration": 0.8,
 "texture": SubResource("AtlasTexture_74ftr")
 }, {
-"duration": 1.0,
+"duration": 0.9,
 "texture": SubResource("AtlasTexture_j51v8")
 }, {
 "duration": 1.0,
@@ -230,8 +231,15 @@ size = Vector2(154, 322)
 [sub_resource type="CircleShape2D" id="CircleShape2D_lk74j"]
 radius = 20348.115
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lk74j"]
+size = Vector2(583, 300)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uvtap"]
+size = Vector2(171, 331)
+
 [node name="BaseEnemy" type="CharacterBody2D" unique_id=1159031697]
-collision_layer = 4
+collision_layer = 16
+collision_mask = 2
 script = ExtResource("1_uu1nm")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1567447587]
@@ -258,3 +266,28 @@ debug_color = Color(0.74895364, 0.4608791, 3.85046e-07, 0.41960785)
 [node name="AttackCooldown" type="Timer" parent="." unique_id=781135872]
 wait_time = 7.213
 one_shot = true
+
+[node name="Health" type="Node" parent="." unique_id=703622964]
+script = ExtResource("3_5al4y")
+
+[node name="Hitbox" type="Area2D" parent="." unique_id=397374551 groups=["hitbox"]]
+collision_layer = 4
+collision_mask = 64
+
+[node name="HitboxShape" type="CollisionShape2D" parent="Hitbox" unique_id=1764681016]
+position = Vector2(293.5, -152)
+shape = SubResource("RectangleShape2D_lk74j")
+disabled = true
+
+[node name="Hurtbox" type="Area2D" parent="." unique_id=1763011001 groups=["hurtbox"]]
+collision_layer = 8
+collision_mask = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=657461482]
+visible = false
+position = Vector2(15.5, -155.5)
+shape = SubResource("RectangleShape2D_uvtap")
+
+[connection signal="frame_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_frame_changed"]
+[connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
+[connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]

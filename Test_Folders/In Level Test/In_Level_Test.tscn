@@ -29,10 +29,6 @@ autostart = true
 position = Vector2(111.00001, 469)
 scale = Vector2(0.75, 0.75)
 
-[node name="BaseEnemy" parent="." unique_id=1159031697 instance=ExtResource("4_ixv1a")]
-position = Vector2(251, 438)
-scale = Vector2(0.33, 0.33)
-
 [node name="Button" type="Button" parent="." unique_id=87316449]
 offset_left = 858.99994
 offset_top = 12.999999
