@@ -6,7 +6,7 @@ signal on_take_damage ()
 signal on_die ()
 
 enum PostDeath {DestroyNode, RestartScene}
-
+#add win and lose screen
 var current : int
 @export var max : int = 100
 
