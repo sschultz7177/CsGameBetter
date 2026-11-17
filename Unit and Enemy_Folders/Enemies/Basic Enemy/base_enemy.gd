@@ -99,7 +99,7 @@ func _on_animated_sprite_2d_animation_finished() -> void:
 			$Hitbox/HitboxShape.set_deferred("disabled", true)
 
 func _on_hitbox_area_entered(area: Area2D) -> void:
-	print("Hitbox entered: ", area.name, " on parent: ", area.get_parent().name)
+	#print("Hitbox entered: ", area.name, " on parent: ", area.get_parent().name)
 	if area.name == "Hurtbox" or area.is_in_group("hurtbox"):
 		var target_parent = area.get_parent()
 		if target_parent and target_parent != self:
