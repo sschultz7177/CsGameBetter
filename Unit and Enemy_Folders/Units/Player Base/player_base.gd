@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 var money: float = 0.0
-var money_per_second: float = 500
+var money_per_second: float = 2
 var MoneyUpgrade = 0
 @onready var label: Label = $Label 
 @onready var timer: Timer = $Timer
@@ -26,7 +26,7 @@ const Sword_unit = preload("res://Unit and Enemy_Folders/Units/Sword Unit/sword_
 func _on_money_upgrade_pressed() -> void:
 	if money >= 60:
 		money -= 60
-		MoneyUpgrade = 1
+		MoneyUpgrade += 1
 
 
 func _on_button_pressed() -> void:

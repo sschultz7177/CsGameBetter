@@ -1,3 +1,15 @@
 [gd_scene format=3 uid="uid://b3b2pa1611g00"]
 
+[ext_resource type="Script" uid="uid://dmnffa70284dg" path="res://Planets/Planet 1/p_1_map.gd" id="1_gpqc6"]
+
 [node name="P1Map" type="Node2D" unique_id=1029173838]
+script = ExtResource("1_gpqc6")
+
+[node name="level1_button" type="Button" parent="." unique_id=2043167374]
+offset_left = 57.0
+offset_top = 130.0
+offset_right = 263.0
+offset_bottom = 242.0
+text = "Level 1"
+
+[connection signal="pressed" from="level1_button" to="." method="_on_button_pressed"]

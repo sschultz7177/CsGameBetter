@@ -19,6 +19,7 @@ offset_left = -430.6667
 offset_top = -933.3334
 offset_right = 161.33331
 offset_bottom = -774.6667
+justification_flags = 161
 
 [node name="Timer" type="Timer" parent="CharacterBody2D" unique_id=1772635595]
 wait_time = 0.25

@@ -1,3 +1,19 @@
 [gd_scene format=3 uid="uid://bl7s08fhuynq"]
 
+[ext_resource type="Script" uid="uid://4avhqpm66nvf" path="res://Other_Files/Lose Screen/lose_screen.gd" id="1_figh8"]
+[ext_resource type="Texture2D" uid="uid://cx487jvlrhpmd" path="res://Other_Files/Lose Screen/New Piskel-1.png (2).png" id="2_8xy3r"]
+
 [node name="LoseScreen" type="Node2D" unique_id=1641330702]
+script = ExtResource("1_figh8")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=297893339]
+texture = ExtResource("2_8xy3r")
+
+[node name="Button" type="Button" parent="." unique_id=643321957]
+offset_left = 513.0
+offset_top = -454.0
+offset_right = 744.0
+offset_bottom = -358.0
+text = "Back"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

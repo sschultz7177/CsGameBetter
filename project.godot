@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="CSgame"
-run/main_scene="uid://i1ub50sc0hm2"
+run/main_scene="uid://ddo8rna3fngyb"
 config/features=PackedStringArray("4.7", "Forward Plus")
 config/icon="res://Other_Files/icon.svg"
 
@@ -31,7 +31,9 @@ window/stretch/aspect="expand"
 
 folder_colors={
 "res://Menu_Folders/": "yellow",
+"res://Nodes/": "red",
 "res://Other_Files/": "gray",
+"res://Planets/": "pink",
 "res://Test_Folders/": "teal",
 "res://Unit and Enemy_Folders/": "purple"
 }

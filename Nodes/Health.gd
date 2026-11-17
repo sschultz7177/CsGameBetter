@@ -5,6 +5,7 @@ signal on_change (current : int, max : int)
 signal on_take_damage ()
 signal on_die ()
 const win_screen = preload("res://Other_Files/Win Screen/win_screen.tscn")
+const lose_screen = preload("res://Other_Files/Lose Screen/lose_screen.tscn")
 
 enum PostDeath {DestroyNode, Lose, Win}
 #add win and lose screen
@@ -31,10 +32,13 @@ func die():
 	on_die.emit()
 	if PostDeathAction == PostDeath.DestroyNode:
 		get_parent().queue_free()
-	elif PostDeathAction == PostDeath.Lose:
-		get_tree().reload_current_scene()
 	elif PostDeathAction == PostDeath.Win:
 		var new_object = win_screen.instantiate()
+		new_object.position = Vector2(1000, 540)
+		get_tree().current_scene.call_deferred("add_child", new_object)
+		get_parent().queue_free()
+	elif PostDeathAction == PostDeath.Lose:
+		var new_object = lose_screen.instantiate()
 		new_object.position = Vector2(1000, 540)
 		get_tree().current_scene.call_deferred("add_child", new_object)
 		get_parent().queue_free()

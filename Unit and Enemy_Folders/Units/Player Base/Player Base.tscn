@@ -1,10 +1,15 @@
 [gd_scene format=3 uid="uid://ddxfr5bv74ngw"]
 
+[ext_resource type="Script" uid="uid://cuo37hmahr7sk" path="res://Nodes/Health.gd" id="1_gv5v3"]
+
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_iw1dx"]
 load_path = "res://.godot/imported/player base.png.png-f5fc3bb35d11748166aba5320bf8178d.ctex"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lk74j"]
 size = Vector2(235, 329)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r3rgl"]
+size = Vector2(236, 496.5)
 
 [node name="CharacterBody2D" type="CharacterBody2D" unique_id=673678371]
 collision_layer = 2
@@ -18,3 +23,15 @@ texture = SubResource("CompressedTexture2D_iw1dx")
 visible = false
 position = Vector2(122, -163)
 shape = SubResource("RectangleShape2D_lk74j")
+
+[node name="Health" type="Node" parent="." unique_id=2060887688]
+script = ExtResource("1_gv5v3")
+PostDeathAction = 1
+
+[node name="Hurtbox" type="Area2D" parent="." unique_id=1157569292]
+collision_layer = 64
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=985018584]
+position = Vector2(116, -246.75)
+shape = SubResource("RectangleShape2D_r3rgl")

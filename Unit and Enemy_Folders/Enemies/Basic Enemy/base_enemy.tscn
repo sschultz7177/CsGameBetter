@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bab3gas10x0sy" path="res://Unit and Enemy_Folders/Enemies/Basic Enemy/base_enemy.gd" id="1_uu1nm"]
 [ext_resource type="Texture2D" uid="uid://b5ijmw6tnor21" path="res://Unit and Enemy_Folders/Enemies/Basic Enemy/basic enemy.png" id="2_sb1aa"]
-[ext_resource type="Script" uid="uid://cuo37hmahr7sk" path="res://Test_Folders/In Level Test/Health.gd" id="3_5al4y"]
+[ext_resource type="Script" uid="uid://cuo37hmahr7sk" path="res://Nodes/Health.gd" id="3_5al4y"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fpp71"]
 atlas = ExtResource("2_sb1aa")

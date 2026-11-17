@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bqenbfu34dnxo" path="res://Unit and Enemy_Folders/Enemies/Enemy Base/enemy_base.gd" id="1_46n06"]
 [ext_resource type="Texture2D" uid="uid://d0pwelnwtaru4" path="res://Unit and Enemy_Folders/Enemies/Enemy Base/enemy base.png.png" id="1_84jui"]
-[ext_resource type="Script" uid="uid://cuo37hmahr7sk" path="res://Test_Folders/In Level Test/Health.gd" id="3_cnwev"]
+[ext_resource type="Script" uid="uid://cuo37hmahr7sk" path="res://Nodes/Health.gd" id="3_cnwev"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lk74j"]
 size = Vector2(226.5, 410.5)
@@ -26,7 +26,7 @@ shape = SubResource("RectangleShape2D_lk74j")
 debug_color = Color(0.7366128, 0.22553915, 0.99999994, 0.41960785)
 
 [node name="Timer" type="Timer" parent="." unique_id=502937412]
-wait_time = 5.759
+wait_time = 0.518
 autostart = true
 
 [node name="Health" type="Node" parent="." unique_id=2024583781]
