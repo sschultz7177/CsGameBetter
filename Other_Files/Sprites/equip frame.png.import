@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bwshrsk0kl0m0"
-path="res://.godot/imported/sword idle.png.png-c525b17468719b69d94043a89a2701f9.ctex"
+uid="uid://lihxoov2u8id"
+path="res://.godot/imported/equip frame.png-d221cf41e3dd390f273f4fb53d852bfc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Other_Files/sword idle.png.png"
-dest_files=["res://.godot/imported/sword idle.png.png-c525b17468719b69d94043a89a2701f9.ctex"]
+source_file="res://Other_Files/Sprites/equip frame.png"
+dest_files=["res://.godot/imported/equip frame.png-d221cf41e3dd390f273f4fb53d852bfc.ctex"]
 
 [params]
 

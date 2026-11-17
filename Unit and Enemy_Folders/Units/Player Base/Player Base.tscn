@@ -11,10 +11,10 @@ collision_layer = 2
 collision_mask = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=78855930]
-position = Vector2(2, -161)
+position = Vector2(93, -158)
 texture = SubResource("CompressedTexture2D_iw1dx")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=699014400]
 visible = false
-position = Vector2(20, -166)
+position = Vector2(122, -163)
 shape = SubResource("RectangleShape2D_lk74j")

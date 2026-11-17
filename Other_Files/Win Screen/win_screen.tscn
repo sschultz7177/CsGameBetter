@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://elpya06h4lip"]
+
+[ext_resource type="Texture2D" uid="uid://cjcpuo7a38bee" path="res://Other_Files/Win Screen/New Piskel-1.png.png" id="1_gcv3c"]
+[ext_resource type="Script" uid="uid://bvotjr7v10kjm" path="res://Other_Files/Win Screen/win_screen.gd" id="1_o8ryu"]
+
+[node name="Node2D" type="Node2D" unique_id=1734513663]
+script = ExtResource("1_o8ryu")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1521108888]
+position = Vector2(2, 1.0000038)
+scale = Vector2(0.9096386, 0.9222222)
+texture = ExtResource("1_gcv3c")
+
+[node name="Button" type="Button" parent="." unique_id=1714767400]
+offset_left = 394.0
+offset_top = -417.0
+offset_right = 580.0
+offset_bottom = -347.0
+text = "back"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
