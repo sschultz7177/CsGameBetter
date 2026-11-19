@@ -278,15 +278,16 @@ collision_mask = 64
 position = Vector2(293.5, -152)
 shape = SubResource("RectangleShape2D_lk74j")
 disabled = true
+debug_color = Color(2.3102762e-06, 0.5988648, 0.7084275, 0.41960785)
 
 [node name="Hurtbox" type="Area2D" parent="." unique_id=1763011001 groups=["hurtbox"]]
 collision_layer = 8
 collision_mask = 32
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=657461482]
-visible = false
 position = Vector2(15.5, -155.5)
 shape = SubResource("RectangleShape2D_uvtap")
+debug_color = Color(0.76077014, 0.35445085, 0.9060982, 0.41960785)
 
 [connection signal="frame_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_frame_changed"]
 [connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]

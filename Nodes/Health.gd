@@ -8,7 +8,7 @@ const win_screen = preload("res://Other_Files/Win Screen/win_screen.tscn")
 const lose_screen = preload("res://Other_Files/Lose Screen/lose_screen.tscn")
 
 enum PostDeath {DestroyNode, Lose, Win}
-#add win and lose screen
+
 var current : int
 @export var max : int = 100
 

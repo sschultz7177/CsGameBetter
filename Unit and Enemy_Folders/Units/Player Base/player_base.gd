@@ -1,9 +1,9 @@
 extends CharacterBody2D
 var money: float = 0.0
-var money_per_second: float = 1
+var money_per_second: float = 2
 var MoneyUpgrade = 1
-@onready var label: Label = $Label 
-@onready var timer: Timer = $Timer
+@onready var label: Label = $MoneyLabel 
+@onready var timer: Timer = $MoneyTimer
 
 func _ready() -> void:
 	timer.timeout.connect(_on_timer_timeout)
@@ -11,6 +11,8 @@ func _ready() -> void:
 
 func _on_timer_timeout() -> void:
 		money += money_per_second * MoneyUpgrade
+		if money >= 160:
+			money = 160
 		update_money_display()
 
 

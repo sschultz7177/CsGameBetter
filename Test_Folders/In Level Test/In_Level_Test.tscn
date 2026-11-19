@@ -10,24 +10,29 @@
 script = ExtResource("1_h086h")
 
 [node name="CharacterBody2D" parent="." unique_id=673678371 instance=ExtResource("2_h086h")]
-position = Vector2(1736, 752)
+position = Vector2(1745, 727)
 scale = Vector2(0.75, 0.75)
 script = ExtResource("4_uu02g")
 
-[node name="Label" type="Label" parent="CharacterBody2D" unique_id=1135156609]
-offset_left = -430.6667
-offset_top = -933.3334
-offset_right = 161.33331
-offset_bottom = -774.6667
+[node name="MoneyLabel" type="Label" parent="CharacterBody2D" unique_id=1135156609]
+offset_left = -402.6667
+offset_top = -850.6666
+offset_right = -223.99994
+offset_bottom = -794.6666
+scale = Vector2(2, 2)
 justification_flags = 161
 
-[node name="Timer" type="Timer" parent="CharacterBody2D" unique_id=1772635595]
+[node name="MoneyTimer" type="Timer" parent="CharacterBody2D" unique_id=1772635595]
 wait_time = 0.25
 autostart = true
 
 [node name="CharacterBody2D2" parent="." unique_id=246855887 instance=ExtResource("3_uu02g")]
-position = Vector2(183, 709)
+position = Vector2(174, 709)
 scale = Vector2(0.75, 0.75)
+
+[node name="EnemySpawn" type="Timer" parent="CharacterBody2D2" unique_id=557488829]
+wait_time = 1.253
+autostart = true
 
 [node name="Button" type="Button" parent="." unique_id=87316449]
 offset_left = 593.0
@@ -46,12 +51,21 @@ offset_right = 329.0
 offset_bottom = 987.0
 text = "Money upgrade"
 
-[node name="Label2" type="Label" parent="." unique_id=183681364]
+[node name="UnitPrice" type="Label" parent="." unique_id=183681364]
 offset_left = 672.0
 offset_top = 851.0
 offset_right = 712.0
 offset_bottom = 874.0
 text = "$20"
 
+[node name="BackButton" type="Button" parent="." unique_id=702766495]
+offset_left = 28.0
+offset_top = 53.0
+offset_right = 174.0
+offset_bottom = 119.0
+text = "Back
+"
+
 [connection signal="pressed" from="Button" to="CharacterBody2D" method="_on_button_pressed"]
 [connection signal="pressed" from="MoneyUpgrade" to="CharacterBody2D" method="_on_money_upgrade_pressed"]
+[connection signal="pressed" from="BackButton" to="." method="_on_button_2_pressed"]

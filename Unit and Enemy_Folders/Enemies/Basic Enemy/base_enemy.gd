@@ -1,8 +1,8 @@
 extends CharacterBody2D
 
 @export var SPEED: float = 150.0
-@export var STOP_DISTANCE: float = 450.0
-@export var damage_amount: int = 30
+@export var STOP_DISTANCE: float = 430.0
+@export var damage_amount: int = 10
 
 enum State {IDLE, WALK, ATTACK}
 var current_state: State = State.IDLE
